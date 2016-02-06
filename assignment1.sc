@@ -58,10 +58,10 @@ object assignment1 {
 		// If the remaining sum can be reduced with the current coin, there are two ways to move
 		// forward: Take the coin and check the same coin next time too, or just move to the next one without
 		// taking it. Both of these are explored.
-		else if (money - coins.head >= 0) countOnSorted(money - coins.head, coins) +
-		countOnSorted(money, coins.tail)
-		// Jos ei voida valita, niin mennään seuraavaan kolikkoon.
-		else countOnSorted(money, coins.tail)
+		else if (money - coins.head >= 0) countChange(money - coins.head, coins) +
+		countChange(money, coins.tail)
+		// If the current coin cannot be chosen, just move on.
+		else countChange(money, coins.tail)
 	
 	countChange(7, List(2,1))
 	
