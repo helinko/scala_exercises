@@ -8,15 +8,16 @@ object assignment1 {
 		if ( row == 0 && col == 0) 1
 		else if (col < 0 || col > row) 0
 		else pascal(col - 1, row - 1) + pascal(col, row - 1)
+                                                  //> pascal: (col: Int, row: Int)Int
 	
-	// Testing 
+	// Testing
 	
-	pascal(0,0)
-	pascal(0,1)
-	pascal(1,1)
-	pascal(2,4)
-	pascal(1,4)
-	pascal(3,4)
+	pascal(0,0)                               //> res0: Int = 1
+	pascal(0,1)                               //> res1: Int = 1
+	pascal(1,1)                               //> res2: Int = 1
+	pascal(2,4)                               //> res3: Int = 6
+	pascal(1,4)                               //> res4: Int = 4
+	pascal(3,4)                               //> res5: Int = 4
 
 
 // EXERCISE 2
@@ -30,7 +31,7 @@ object assignment1 {
 			//  If the count becomes negative, the balance is off. Also, if there are no characters left
 			// and the balance is not zero, it's off.
 			else if (bal_count < 0 || chars.isEmpty) false
-			// If an opening bracket is encountered, increment the count and vice versa. 
+			// If an opening bracket is encountered, increment the count and vice versa.
 			else if ( chars.head == '(' ) balance_rec(chars.tail, bal_count + 1)
 			else if ( chars.head == ')' ) balance_rec(chars.tail, bal_count - 1)
 			// If any other character is encountered, just move on.
@@ -38,16 +39,16 @@ object assignment1 {
 		
 		balance_rec(chars, 0)
 			
-	}
+	}                                         //> balance: (chars: List[Char])Boolean
 	
 	// Testing
-	balance("(test(test(t)))(sd)".toList)
-	balance(":-)".toList)
-	balance("())(".toList)
+	balance("(test(test(t)))(sd)".toList)     //> res6: Boolean = true
+	balance(":-)".toList)                     //> res7: Boolean = false
+	balance("())(".toList)                    //> res8: Boolean = false
 
 // EXERCISE 3
 	
-	// Count the ways in which change can be given. The function takes the amount of money and 
+	// Count the ways in which change can be given. The function takes the amount of money and
 	// list of unique, integer coin denominations (the order of which doesn't matter).
 	
 	def countChange(money:Int, coins: List[Int]): Int =
@@ -62,7 +63,9 @@ object assignment1 {
 		countChange(money, coins.tail)
 		// If the current coin cannot be chosen, just move on.
 		else countChange(money, coins.tail)
-	
-	countChange(7, List(2,1))
-	
+                                                  //> countChange: (money: Int, coins: List[Int])Int
+	// Testing
+	countChange(7, List(2,1))                 //> res9: Int = 4
+	countChange(24, List(3,2,1))              //> res10: Int = 61
+	countChange(8, List(2,1))                 //> res11: Int = 5
 }
